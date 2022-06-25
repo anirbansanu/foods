@@ -5,7 +5,7 @@ const reg = (data)=>{
 }
 function login(data){
   const d={
-    email:data.email,
+    email:data.user_id,
     password:data.password
   }
   return http.post(`${host}user/auth`,d);

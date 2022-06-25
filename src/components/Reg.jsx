@@ -12,15 +12,10 @@ export default class Reg extends Form {
         data: { 
             f_name: '',
             l_name: '',
-            email: '',
-            phone:'',
             password: '',
             image: '',
             imagePreview: '',
-            district: '',
-            state:'',
-            city:'',
-            country:'',
+            
         },
         tab: 1,
         errors: {}
@@ -35,28 +30,9 @@ export default class Reg extends Form {
         l_name: Joi.string()
         .required()
         .label("Last_Name"),
-        email: Joi.string()
-            .required()
-            .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
-            .label("Email"),
-        phone: Joi.string()
-          .required()
-          .label("Phone"),
         password: Joi.string()
           .required()
           .label("Password"),
-        city: Joi.string()
-          .required()
-          .label("City"),
-        district: Joi.string()
-          .required()
-          .label("District"),
-        state: Joi.string()
-          .required()
-          .label("State"),
-        country: Joi.string()
-          .required()
-          .label("Country"),
         image: Joi.any()
         .label("Profile Image"),
         imagePreview: Joi.any()
@@ -79,15 +55,11 @@ export default class Reg extends Form {
     doSubmit = async() => {
         const formData = new FormData();
 
-        formData.append('f_name', this.state.data.f_name);
-        formData.append('l_name', this.state.data.l_name);
-        formData.append('email', this.state.data.email);
-        formData.append('phone', this.state.data.phone);
+        formData.append('name', this.state.data.f_name+" "+this.state.data.l_name);
+        
         formData.append('pass', this.state.data.password);
-        formData.append('district', this.state.data.district);
-        formData.append('state', this.state.data.state);
-        formData.append('city', this.state.data.city);
-        formData.append('country', this.state.data.country);
+        formData.append('pass', this.state.data.cpassword);
+        
         formData.append('image', this.state.data.image);
 
 
@@ -121,7 +93,7 @@ export default class Reg extends Form {
                     {/* <!-- /.login-logo --> */}
                     <div className="card card-outline card-primary">
                         <div className="card-header text-center">
-                            <Link to="/home" className="h1"><b>Tradly</b>App</Link>
+                            <Link to="/home" className="h1"><b>Food</b>Blog</Link>
                         </div>
                         <div className="card-body">
                             <p className="login-box-msg">Register a new membership</p>
@@ -130,14 +102,12 @@ export default class Reg extends Form {
                             <div className={`tab ${this.state.tab===1?"":'d-none'}`}>
                                 {this.renderInputAppendGroup("f_name","First Name","text","","fas fa-user")}
                                 {this.renderInputAppendGroup("l_name","Last Name","text","","fas fa-user")}
-                                {this.renderInputAppendGroup("email", "Email",'email','','fas fa-envelope')}
-                                {this.renderInputAppendGroup("phone", "Phone",'text','','fas fa-envelope')}
                                 {this.renderInputAppendGroup("password", "Password", "password",'','fas fa-lock')}
                                 <div className='d-flex justify-content-end'>
                                     <button type="button" onClick={()=>this.nxtTab(2)} className="btn btn-primary btn-sm bold" >Next</button>
                                 </div>
                             </div>
-                            <div className={`tab ${this.state.tab===2?"":'d-none'}`}>
+                            {/* <div className={`tab ${this.state.tab===2?"":'d-none'}`}>
                                 {this.renderInputAppendGroup("city","City","text","","fas fa-city")}
                                 {this.renderInputAppendGroup("district", "District",'text','','fas fa-map-marked-alt')}
                                 {this.renderInputAppendGroup("state", "State", "text",'','fas fa-map-marked-alt')}
@@ -147,8 +117,8 @@ export default class Reg extends Form {
                                     <button type="button" onClick={()=>this.nxtTab(1)} className="btn btn-sm btn-outline-primary bold ">Previous</button>
                                     <button type="button" onClick={()=>this.nxtTab(3)} className="btn btn-primary btn-sm bold" >Next</button>
                                 </div>
-                            </div>
-                            <div className={`tab ${this.state.tab===3?"":'d-none'}`}>
+                            </div> */}
+                            <div className={`tab ${this.state.tab===2?"":'d-none'}`}>
                                     <div className='card mb-3' style={{minHeight: '200px'}}>
                                     <label htmlFor="exampleInputFile">File input</label>
                                         <img className='img-fluid' src={this.state.imagePreview?this.state.imagePreview:avatar} alt="profile" />
@@ -164,7 +134,7 @@ export default class Reg extends Form {
                                     </div>
                                 
                                 <div className='d-flex justify-content-between'>
-                                    <button type="button" onClick={()=>this.nxtTab(2)} className="btn btn-sm btn-outline-primary bold ">Previous</button>
+                                    <button type="button" onClick={()=>this.nxtTab(1)} className="btn btn-sm btn-outline-primary bold ">Previous</button>
                                     {this.renderButton("Sign Up")}
                                 </div>
                             </div>
@@ -175,7 +145,7 @@ export default class Reg extends Form {
                             {/* <a href="forgot-password.html">I forgot my password</a> */}
                             </p>
                             <div className="d-flex justify-content-center">
-                             <Link to="/login" className="p-2">I already have a membership</Link>
+                             <Link to="/signin" className="p-2">I already have a membership</Link>
                             </div>
                         </div>
                     {/* <!-- /.card-body --> */}
