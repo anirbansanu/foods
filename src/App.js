@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import Header from './components/common/Header';
 import jwtDecode from "jwt-decode";
+import Profile from './pages/Profile';
 export default function App() {
   const [user, setUser] = useState(0);
   useEffect(() => {
@@ -31,13 +32,18 @@ export default function App() {
   return (
     <>
     <ToastContainer/>
+    <div className="wrapper">
+      <div className='container-fluid p-0'>
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
       </Routes>
+      </div>
+    </div>
     </>
   );
 }

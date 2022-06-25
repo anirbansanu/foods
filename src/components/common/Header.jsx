@@ -39,7 +39,7 @@ export default class Header extends Component {
                     </div>
                   
                     <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                      <span className="dropdown-item dropdown-header bg-gradient-primary bold">Profile</span>
+                      <span className="dropdown-item dropdown-header bg-gradient-primary bold text-white">Profile</span>
                       <div className="dropdown-divider" />
                       <Link to="/profile" className="dropdown-item">
                         <i className="fas fa-user mr-2" /> View

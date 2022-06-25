@@ -73,7 +73,6 @@ export default class Menu extends Component {
               </div>
               {/* /.sidebar */}
             </aside>
-            <Outlet/>
           </div>
 
         )
