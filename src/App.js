@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import SignIn from "./pages/SignIn";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
+import Header from './components/common/Header';
 import jwtDecode from "jwt-decode";
 export default function App() {
   const [user, setUser] = useState(0);
@@ -31,7 +32,9 @@ export default function App() {
     <>
     <ToastContainer/>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Header />}>
+          <Route index element={<Home />} />
+        </Route>
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
       </Routes>

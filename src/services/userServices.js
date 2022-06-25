@@ -11,22 +11,22 @@ function login(data){
   return http.post(`${host}user/auth`,d);
 }
 
-function products(){
+function foods(){
   
-  return http.get(`${host}product/all`);
+  return http.get(`${host}food/all`);
 }
-function addProduct(data){
-  return http.post(`${host}product/`,data);
+function addFood(data){
+  return http.post(`${host}food/`,data);
 }
-function delProduct(data)
+function delFood(data)
 {  
-  return http.delete(`${host}product/delete/${data}`);
+  return http.delete(`${host}food/delete/${data}`);
 }
-function productsByUser(id){
-  return http.get(`${host}product/all/${id}`);
+function foodsByUser(id){
+  return http.get(`${host}food/all/${id}`);
 }
-function product(id){
-  return http.get(`${host}product/${id}`);
+function food(id){
+  return http.get(`${host}food/${id}`);
 }
 const cats=()=>{
   return http.get(`${host}cat/all`);
@@ -55,10 +55,10 @@ const user = {
   cat,
   cats,
   postAdd,
-  products,
-  productsByUser,
-  product,
-  addProduct,
-  delProduct
+  foods,
+  addFood,
+  delFood,
+  foodsByUser,
+  food
 }
 export default user;

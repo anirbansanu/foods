@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
-import logo from '../../../img/logo.png';
+import logo from '../logo.png';
 // import userPic from '../../../img/user2-160x160.jpg';
 
 export default class Menu extends Component {
@@ -12,7 +12,7 @@ export default class Menu extends Component {
               {/* Brand Logo */}
               <a href="index3.html" className="brand-link">
                 <img src={logo} alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{opacity: '.9',width:"35px",height:"35px"}} />
-                <span className="brand-text font-weight-light bold">Tradly</span>
+                <span className="brand-text font-weight-light bold"><b>Food-Blog</b></span>
               </a>
               {/* Sidebar */}
               <div className="sidebar">
@@ -73,6 +73,7 @@ export default class Menu extends Component {
               </div>
               {/* /.sidebar */}
             </aside>
+            <Outlet/>
           </div>
 
         )
